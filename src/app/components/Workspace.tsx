@@ -276,7 +276,7 @@ export function Workspace({ onCreateNew, onViewReport, onEditReport, onManageAwa
     'my-awards'
   );
   const [filterStatus, setFilterStatus] = useState<'all' | 'active' | 'terminated'>('all');
-  const [sortBy, setSortBy] = useState<'award-number' | 'contractor' | 'date' | 'value'>('award-number');
+  const [sortBy, setSortBy] = useState<'date-latest' | 'date-oldest' | 'title-az' | 'title-za'>('date-latest');
   const [manageMenuOpen, setManageMenuOpen] = useState<string | null>(null);
   const [currentOfficeId, setCurrentOfficeId] = useState('DCMA-2024');
   const [officeMenuOpen, setOfficeMenuOpen] = useState(false);
@@ -342,16 +342,14 @@ export function Workspace({ onCreateNew, onViewReport, onEditReport, onManageAwa
   // Sort awards based on selected sort option
   const sortedAwards = [...filteredAwards].sort((a, b) => {
     switch (sortBy) {
-      case 'award-number':
-        return a.awardNumber.localeCompare(b.awardNumber);
-      case 'contractor':
-        return a.contractorName.localeCompare(b.contractorName);
-      case 'date':
+      case 'date-latest':
         return new Date(b.popStart).getTime() - new Date(a.popStart).getTime();
-      case 'value':
-        const valueA = parseInt(a.value.replace(/[$,]/g, ''));
-        const valueB = parseInt(b.value.replace(/[$,]/g, ''));
-        return valueB - valueA;
+      case 'date-oldest':
+        return new Date(a.popStart).getTime() - new Date(b.popStart).getTime();
+      case 'title-az':
+        return a.awardTitle.localeCompare(b.awardTitle);
+      case 'title-za':
+        return b.awardTitle.localeCompare(a.awardTitle);
       default:
         return 0;
     }
@@ -926,10 +924,10 @@ export function Workspace({ onCreateNew, onViewReport, onEditReport, onManageAwa
                       onChange={(e) => setSortBy(e.target.value as any)}
                       className="px-3 py-2 text-sm border border-[#a9aeb1] rounded focus:outline-none focus:ring-2 focus:ring-[#2491ff] bg-white"
                     >
-                      <option value="award-number">Award Number</option>
-                      <option value="contractor">Contractor Name</option>
-                      <option value="date">Start Date</option>
-                      <option value="value">Contract Value</option>
+                     <option value="date-latest">Date: Latest</option>
+                      <option value="date-oldest">Date: Oldest</option>
+                      <option value="title-az">Title: A-Z</option>
+                      <option value="title-za">Title: Z-A</option>
                     </select>
                   </div>
                 </div>
