@@ -718,7 +718,7 @@ export function IntegrityRecordForm({ initialData, onComplete, onSaveDraft }: In
             </div>
             <div>
               <label className="block text-base font-bold text-[#1b1b1b] mb-2">
-                 federal Award ID or Indefinite Delivery Vehicle (IDV) number, 
+                 Federal Award ID or IDV Number
               </label>
               <input
                 type="text"
