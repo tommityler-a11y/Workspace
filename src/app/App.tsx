@@ -29,7 +29,7 @@
  * Report Management: View/edit/delete happens from workspace
  */
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Workspace } from './components/Workspace';
 import { IntegrityRecordForm } from './components/IntegrityRecordForm';
 import { IntegrityRecordReview } from './components/IntegrityRecordReview';
@@ -40,6 +40,10 @@ import { TerminateContractForm } from './components/TerminateContractForm';
 type Page = 'workspace' | 'create-report' | 'edit-report' | 'view-report' | 'form' | 'review' | 'confirmation' | 'terminate-contract';
 
 export default function App() {
+  // Set document title on mount
+  useEffect(() => {
+    document.title = 'SAM.gov Integrity Records System';
+  }, []);
   const [currentPage, setCurrentPage] = useState<Page>('workspace');
   const [currentReportId, setCurrentReportId] = useState<string | null>(null);
   const [selectedAward, setSelectedAward] = useState<any>(null);
