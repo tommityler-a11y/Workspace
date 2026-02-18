@@ -718,7 +718,7 @@ export function IntegrityRecordForm({ initialData, onComplete, onSaveDraft }: In
             </div>
             <div>
               <label className="block text-base font-bold text-[#1b1b1b] mb-2">
-                Contract Award ID Number
+                 federal Award ID or Indefinite Delivery Vehicle (IDV) number, 
               </label>
               <input
                 type="text"
@@ -727,7 +727,7 @@ export function IntegrityRecordForm({ initialData, onComplete, onSaveDraft }: In
                 placeholder="Optional - leave blank to see all awards"
                 className="w-full h-11 px-3 py-2 border border-[#565c65] bg-white text-[#1b1b1b] focus:outline-none focus:border-[#0050d8] focus:ring-2 focus:ring-[#0050d8]"
               />
-              <p className="text-sm text-[#71767a] mt-1">Optional: Enter the Contract Number to go directly to that award. Leave blank to see all awards for this UEI.</p>
+              <p className="text-sm text-[#71767a] mt-1">Optional: Enter the Contract Number or Indefinite Delivery Vehicle (IDV) to go directly to that award. Leave blank to see all awards for this UEI.</p>
             </div>
             <button
               type="button"
