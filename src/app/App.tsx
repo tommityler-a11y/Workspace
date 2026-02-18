@@ -42,7 +42,7 @@ type Page = 'workspace' | 'create-report' | 'edit-report' | 'view-report' | 'for
 export default function App() {
   // Set document title on mount
   useEffect(() => {
-    document.title = 'SAM.gov Integrity Records System';
+    document.title = 'Workspace';
   }, []);
   const [currentPage, setCurrentPage] = useState<Page>('workspace');
   const [currentReportId, setCurrentReportId] = useState<string | null>(null);
